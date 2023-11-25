@@ -141,7 +141,11 @@ void Sayilar_Listesi::yazdir_sayilar_listesi() {
         Basamak* basamak_current = current->sayi->birler;
         while (basamak_current != nullptr) {
             cout.width(6);
-            cout << right << reinterpret_cast<uintptr_t>(basamak_current) % 0x100;
+            stringstream ss;
+	    	ss << hex << reinterpret_cast<uintptr_t>(basamak_current);
+            string ptr_string(ss.str());
+ 	        string son_uc = ptr_string.substr(ptr_string.size() - 3);
+  	      	cout << son_uc;
             cout.width(4);
             cout << right << '|';
             basamak_current = basamak_current->sonraki;
